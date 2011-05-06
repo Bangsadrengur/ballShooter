@@ -3,7 +3,7 @@ import java.awt.*;
 import java.util.*;
 import java.awt.event.*;
 
-class Main extends Applet implements Runnable, MouseListener {
+public class Main extends Applet implements Runnable, MouseListener {
     private Ball blueball, redball;
     private Player player;
     boolean isStopped=true;
@@ -16,8 +16,9 @@ class Main extends Applet implements Runnable, MouseListener {
         this.setCursor(c);
         addMouseListener(this);
         player = new Player();
-        redball = new Ball(Color.red, player);
-        blueball = new Ball(Color.red, player);
+        redball = new Ball(1,Color.red, player);
+        blueball = new Ball(-1,Color.blue, player);
+        setBackground(Color.black);
     }
     public void start() {
         th = new Thread(this);

@@ -13,10 +13,11 @@ class Ball {
     Random rnd=new Random();
     Player player;
     Color color;
-    public Ball(Color color, Player player) {
+    public Ball(int y_speed, Color color, Player player) {
         x_pos=150;
         y_pos=150;
-        radius=15;
+        this.y_speed=y_speed;
+        radius=10;
         this.color=color;
         this.player=player;
     }
