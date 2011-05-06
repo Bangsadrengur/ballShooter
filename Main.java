@@ -49,7 +49,7 @@ public class Main extends Applet implements Runnable, MouseListener {
         if(player.getLives()>=0) {
             g.setColor(Color.yellow);
             g.drawString("Score: " + player.getScore(), 10, 40);
-            g.drawString("Lives: " + player.getLives(), 300, 40);
+            g.drawString("Lives: " + player.getLives(), 240, 40);
             redball.DrawBall(g);
             blueball.DrawBall(g);
             if(isStopped) {

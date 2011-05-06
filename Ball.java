@@ -37,7 +37,7 @@ class Ball {
         double x=x_mouse-x_pos;
         double y=y_mouse-y_pos;
         double distance = Math.sqrt((x*x)+(y*y));
-        if(distance<20) {
+        if(distance<25) {
             player.addScore(10*Math.abs(x_speed)+10);
             return true;
         }
