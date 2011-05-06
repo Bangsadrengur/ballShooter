@@ -16,8 +16,8 @@ class Main extends Applet implements Runnable, MouseListener {
         this.setCursor(c);
         addMouseListener(this);
         player = new Player();
-        redball = new Ball();
-        blueball = new Ball();
+        redball = new Ball(Color.red, player);
+        blueball = new Ball(Color.red, player);
     }
     public void start() {
         th = new Thread(this);
@@ -78,11 +78,11 @@ class Main extends Applet implements Runnable, MouseListener {
     }
     public void mouseClicked(MouseEvent e) {
         if(!isStopped) {
-            if(redball.userHit()) {
+            if(redball.userHit(e.getX(),e.getY())) {
                 //-=Sound=-
                 redball.ballWasHit();
             }
-            if(blueball.userHit()) {
+            if(blueball.userHit(e.getX(),e.getY())) {
                 //-=Sound=-
                 blueball.ballWasHit();
             }
