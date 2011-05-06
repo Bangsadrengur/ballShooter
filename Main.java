@@ -27,23 +27,54 @@ class Main extends Applet implements Runnable, MouseListener {
         th.stop();
     }
     public void run() {
+        Thread.currentThread().setPriority(Thread.MIN_PRIORITY);
         while(true) {
             if(player.getLives()>=0 && !isStopped) {
                 redball.move();
                 blueball.move();
             }
+            repaint();
+            try {
+                // Gæti þurft speed breytu.
+                Thread.sleep(20);
+            }
+            catch(InterruptedException ex) {
+                // do nothing
+            }
+            Thread.currentThread().setPriority(Thread.MAX_PRIORITY);
         }
     }
     public void paint(Graphics g) {
         if(player.getLives()>=0) {
-            // Paint the two balls, score ...
+            g.setColor(Color.yellow);
+            g.drawString("Score: " + player.getScore(), 10, 40);
+            g.drawString("Lives: " + player.getLives(), 300, 40);
+            redball.DrawBall(g);
+            blueball.DrawBall(g);
             if(isStopped) {
-                // paint information: "Start game with a double click"
+                g.setColor(Color.yellow);
+                g.drawString("Doubleclick on Applet to start Game!", 40, 200);
             }
         }
         else if(player.getLives()<0) {
-            // Paint final score, set isStopped true
+            g.setColor(Color.yellow);
+            g.drawString("Game over!", 130, 100);
+            g.drawString("You scored " + player.getScore() + " Points!", 90, 140);
+            // Má bæta inn hversu vel gekk hér með langri if else klausu
+            g.drawString("Doubleclick on the Applet to play again!", 20, 220);
+            isStopped=true;
         }
+    }
+    public void update(Graphics g) {
+        if(dbImage==null) {
+            dbImage=createImage(this.getSize().width, this.getSize().height);
+            dbg=dbImage.getGraphics();
+        }
+        dbg.setColor(getBackground());
+        dbg.fillRect(0,0,this.getSize().width,this.getSize().height);
+        dbg.setColor(getForeground());
+        paint(dbg);
+        g.drawImage(dbImage,0,0,this);
     }
     public void mouseClicked(MouseEvent e) {
         if(!isStopped) {
