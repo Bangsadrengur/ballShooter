@@ -48,21 +48,21 @@ public class Main extends Applet implements Runnable, MouseListener {
     public void paint(Graphics g) {
         if(player.getLives()>=0) {
             g.setColor(Color.yellow);
-            g.drawString("Score: " + player.getScore(), 10, 40);
-            g.drawString("Lives: " + player.getLives(), 240, 40);
+            g.drawString("Stig: " + player.getScore(), 10, 40);
+            g.drawString("Líf: " + player.getLives(), 250, 40);
             redball.DrawBall(g);
             blueball.DrawBall(g);
             if(isStopped) {
                 g.setColor(Color.yellow);
-                g.drawString("Doubleclick on Applet to start Game!", 40, 200);
+                g.drawString("Tvísmellið á glugga til að hefja leik!", 40, 200);
             }
         }
         else if(player.getLives()<0) {
             g.setColor(Color.yellow);
-            g.drawString("Game over!", 130, 100);
-            g.drawString("You scored " + player.getScore() + " Points!", 90, 140);
+            g.drawString("Leik lokið", 120, 100);
+            g.drawString("Þú skoraðir " + player.getScore() + " stig!", 90, 140);
             // Má bæta inn hversu vel gekk hér með langri if else klausu
-            g.drawString("Doubleclick on the Applet to play again!", 20, 220);
+            g.drawString("Tvísmellið á glugga til að hefja nýjan leik!", 20, 180);
             isStopped=true;
         }
     }
