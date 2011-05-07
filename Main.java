@@ -77,7 +77,7 @@ public class Main extends Applet implements Runnable, MouseListener {
         paint(dbg);
         g.drawImage(dbImage,0,0,this);
     }
-    public void mouseClicked(MouseEvent e) {
+    public void mousePressed(MouseEvent e) {
         if(!isStopped) {
             if(redball.userHit(e.getX(),e.getY())) {
                 //-=Sound=-
@@ -97,8 +97,8 @@ public class Main extends Applet implements Runnable, MouseListener {
         }
         return;
     }
+    public void mouseClicked(MouseEvent e) {}
     public void mouseEntered(MouseEvent e) {}
     public void mouseExited(MouseEvent e) {}
-    public void mousePressed(MouseEvent e) {}
     public void mouseReleased(MouseEvent e) {}
 }
