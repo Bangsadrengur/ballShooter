@@ -25,11 +25,12 @@ public class Main extends Applet implements Runnable, MouseListener {
         th.start();
     }
     public void stop() {
-        th.stop();
+        th=null;
     }
     public void run() {
+        Thread thisThread=Thread.currentThread();
         Thread.currentThread().setPriority(Thread.MIN_PRIORITY);
-        while(true) {
+        while(th==thisThread) {
             if(player.getLives()>=0 && !isStopped) {
                 redball.move();
                 blueball.move();
@@ -37,7 +38,7 @@ public class Main extends Applet implements Runnable, MouseListener {
             repaint();
             try {
                 // Gæti þurft speed breytu.
-                Thread.sleep(20);
+                thisThread.sleep(20);
             }
             catch(InterruptedException ex) {
                 // do nothing
